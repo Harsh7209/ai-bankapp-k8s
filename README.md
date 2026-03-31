@@ -1,13 +1,89 @@
-### Kubernetes YAML Files
+# 🚀 AI Bank App - Kubernetes Deployment (KIND)
 
-The Kubernetes YAML files are essential for the deployment and management of containerized applications in the Kubernetes environment. Below is a brief overview of the significant YAML files included in this project:
+## 📌 Project Background
 
-1. **deployment.yml**: This file defines the deployment configuration, including the number of replicas, the image to be used, and the containers' required resources.
-2. **service.yml**: This file configures the service endpoints, facilitating communication between different parts of the application and exposing the deployment to external traffic.
-3. **ingress.yml**: This YAML file manages access to the services from outside the Kubernetes cluster by defining routing rules based on hostnames or paths.
-4. **configmap.yml**: This file contains configuration data that can be used by Pods, which decouples application configurations from container images.
-5. **secret.yml**: This file stores sensitive information, such as passwords and tokens, securely and makes it available to Pods without exposing them in the environment variables.
-6. **persistentVolumeClaim.yml**: This file is used to request storage resources for persistent data storage that can outlive individual Pods.
-7. **namespace.yml**: This defines a namespace for grouping resources and segmenting the use of cluster resources for different applications or teams.
+This project is based on an open-source banking application that I
+adopted and extended.
 
-Each of these files plays a crucial role in ensuring the application's availability, security, and scalability on Kubernetes.
+I enhanced the project by: - Adding Kubernetes (K8s) configuration
+files - Containerizing the application using Docker - Deploying the
+application using a Kubernetes cluster created with KIND (Kubernetes IN
+Docker)
+
+------------------------------------------------------------------------
+
+## 🧱 Tech Stack
+
+-   Docker
+-   Kubernetes
+-   KIND (Kubernetes IN Docker)
+-   (Application: Spring Boot / Node / etc.)
+
+------------------------------------------------------------------------
+
+## ☸️ Kubernetes Implementation
+
+I created a `k8s/` folder that contains all the Kubernetes manifests
+required to deploy the application.
+
+### 🔧 Deployment
+
+-   Manages application pods
+-   Ensures desired number of replicas
+-   Automatically restarts failed containers
+
+### 🌐 Service
+
+-   Exposes the application
+-   Routes traffic to the pods
+-   Enables internal/external access
+
+------------------------------------------------------------------------
+
+## 🚀 Deployment Steps (Using KIND)
+
+### 1️⃣ Create KIND Cluster
+
+``` bash
+kind create cluster --name bankapp-cluster
+```
+
+### 2️⃣ Build Docker Image
+
+``` bash
+docker build -t bankapp .
+```
+
+### 3️⃣ Load Image into KIND
+
+``` bash
+kind load docker-image bankapp --name bankapp-cluster
+```
+
+### 4️⃣ Deploy to Kubernetes
+
+``` bash
+kubectl apply -f k8s/
+```
+
+### 5️⃣ Verify
+
+``` bash
+kubectl get pods
+kubectl get svc
+```
+
+------------------------------------------------------------------------
+
+## 💡 Summary
+
+-   Picked an open-source project
+-   Added Kubernetes configuration
+-   Used KIND to create a local Kubernetes cluster
+-   Deployed the application successfully
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Author
+
+Harsh Choubey
