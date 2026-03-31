@@ -1,57 +1,13 @@
-# AI Bank App - Kubernetes Deployment
+### Kubernetes YAML Files
 
-A production-grade **Spring Boot banking application** with integrated **AI capabilities** using Ollama, containerized with Docker, and orchestrated with Kubernetes.
+The Kubernetes YAML files are essential for the deployment and management of containerized applications in the Kubernetes environment. Below is a brief overview of the significant YAML files included in this project:
 
-## 📋 Table of Contents
+1. **deployment.yml**: This file defines the deployment configuration, including the number of replicas, the image to be used, and the containers' required resources.
+2. **service.yml**: This file configures the service endpoints, facilitating communication between different parts of the application and exposing the deployment to external traffic.
+3. **ingress.yml**: This YAML file manages access to the services from outside the Kubernetes cluster by defining routing rules based on hostnames or paths.
+4. **configmap.yml**: This file contains configuration data that can be used by Pods, which decouples application configurations from container images.
+5. **secret.yml**: This file stores sensitive information, such as passwords and tokens, securely and makes it available to Pods without exposing them in the environment variables.
+6. **persistentVolumeClaim.yml**: This file is used to request storage resources for persistent data storage that can outlive individual Pods.
+7. **namespace.yml**: This defines a namespace for grouping resources and segmenting the use of cluster resources for different applications or teams.
 
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Installation & Setup](#installation--setup)
-- [Usage](#usage)
-- [Deployment](#deployment)
-- [Technology Stack](#technology-stack)
-- [Security](#security)
-- [License](#license)
-
----
-
-## 🎯 Overview
-
-**AI Bank App** is a modern banking web application that combines robust financial operations with AI-powered features. Built with Spring Boot 3.4.13, it provides secure user authentication, banking transactions, and integrates AI models via Ollama for intelligent features.
-
-The application is production-ready with:
-- ✅ Containerized deployment (Docker)
-- ✅ Kubernetes orchestration support
-- ✅ Security best practices (non-root user, Alpine base)
-- ✅ Health checks and monitoring
-- ✅ MySQL database integration
-- ✅ AI model integration
-
----
-
-## ✨ Features
-
-### Banking Features
-- 👤 User authentication and authorization with Spring Security
-- 💳 Account management
-- 💰 Transaction processing
-- 📊 Balance inquiry
-- 🔐 Encrypted sensitive data
-
-### AI Features
-- 🤖 Ollama AI integration
-- 🧠 TinyLLaMA model support
-- 📝 Intelligent assistance for banking operations
-
-### DevSecOps
-- 🛡️ CVE remediation (Tomcat, Jackson versions pinned)
-- 🔍 Trivy security scanning
-- 📈 Prometheus metrics and monitoring
-- ✅ Health checks with actuator endpoints
-
----
-
-## 🏗️ Architecture
-
+Each of these files plays a crucial role in ensuring the application's availability, security, and scalability on Kubernetes.
