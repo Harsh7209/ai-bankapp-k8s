@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: bankapp-namespace
+  labels:
+    app: mysql 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+      containers:
+      - name: mysql-container
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+
+        envFrom:
+        - configMapRef:
+            name: configmap 
+        - secretRef:
+            name: secret
+
+
+
+        volumeMounts:
+        - mountPath: "/var/lib/mysql"
+          
+          name: mysql-storage  
