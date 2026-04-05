@@ -2,7 +2,6 @@
 FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
 COPY . .
-RUN sed -i 's/\r$//' mvnw
 RUN chmod +x mvnw && ./mvnw clean package -DskipTests -B
 
 # Run stage - alpine has significantly fewer CVEs than ubuntu/jammy
