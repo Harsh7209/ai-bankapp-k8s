@@ -89,18 +89,19 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<plugin>
+                   <groupId>org.apache.maven.plugins</groupId>
+                   <artifactId>maven-checkstyle-plugin</artifactId>
+                   <version>3.3.0</version>
+                   <configuration>
+                   <failsOnError>true</failsOnError>
+                   <failOnViolation>true</failOnViolation>
+                   <violationSeverity>error</violationSeverity>
+                   </configuration>
+                </plugin>
 			</plugin>
 		</plugins>
-		<plugin>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-checkstyle-plugin</artifactId>
-  <version>3.3.0</version>
-  <configuration>
-    <failsOnError>true</failsOnError>
-    <failOnViolation>true</failOnViolation>
-    <violationSeverity>error</violationSeverity>
-  </configuration>
-</plugin>
+		
 	</build>
 
 </project>
