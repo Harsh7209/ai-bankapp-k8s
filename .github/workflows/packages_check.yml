@@ -17,7 +17,15 @@ jobs:
       - name: Build
         run: mvn clean install -DskipTests
 
+      - name: Cache OWASP NVD Database
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository/org/owasp/dependency-check-data
+          key: owasp-nvd-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            owasp-nvd-${{ runner.os }}-
+
       - name: Run OWASP Dependency Check
         run: |
-            mvn org.owasp:dependency-check-maven:check \
-            -Dnvd.apiKey=${{ secrets.NVD_API_KEY }}
+          mvn org.owasp:dependency-check-maven:check \
+          -Dnvd.apiKey=${{ secrets.NVD_API_KEY }}
