@@ -1,6 +1,7 @@
 name: Packages-check
 
-on: workflow_dispatch
+on: 
+  workflow_call:
 
 jobs:
   packages_check_workflow:

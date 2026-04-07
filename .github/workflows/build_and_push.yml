@@ -1,5 +1,6 @@
 name: build and to push to dockerhub
-on: workflow_dispatch
+on:
+     workflow_call:
 
 jobs:
   Build_and_push:

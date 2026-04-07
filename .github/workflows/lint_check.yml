@@ -1,6 +1,7 @@
 name: lint-check
 
-on: workflow_dispatch
+on: 
+  workflow_call:
 
 jobs:
   lint-check:

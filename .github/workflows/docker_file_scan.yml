@@ -1,6 +1,6 @@
 name: Docker file scan
 on: 
-    workflow_dispatch
+    workflow_call:
 jobs: 
     Docker_file_scan:
         runs-on: ubuntu-latest

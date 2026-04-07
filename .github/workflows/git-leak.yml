@@ -1,5 +1,6 @@
 name: leak-check
-on: workflow_dispatch
+on: 
+  workflow_call:
 jobs:
   secret-leak-check:
     runs-on: ubuntu-latest
