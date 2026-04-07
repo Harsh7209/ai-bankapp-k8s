@@ -1,0 +1,10 @@
+name: build and to push to dockerhub
+on: 
+    workflow_dispatch
+
+jobs: 
+    Build_and_push:
+        runs-on: ubuntu-latest
+        steps: 
+            - name: code-checkout
+              uses: actions/actions@v4
