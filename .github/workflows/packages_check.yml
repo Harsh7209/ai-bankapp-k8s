@@ -14,5 +14,13 @@ jobs:
           distribution: "temurin"
           cache: "maven"
 
-      - name: check packages
-        run: mvn -B package --file pom.xml
+      - name: OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: "ai-bankapp-k8s"
+          path: "."
+          format: "HTML"
+          # Set a threshold to fail the build if high-severity bugs are found
+          args: >
+            --failOnCVSS 7
+            --enableRetired
