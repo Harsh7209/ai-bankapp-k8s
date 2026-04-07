@@ -16,7 +16,6 @@ jobs:
           java-version: "21"
           distribution: "temurin"
           cache: "maven"
-
       
       - name: Cache OWASP NVD Database
         uses: actions/cache@v4
@@ -26,8 +25,15 @@ jobs:
           restore-keys: |
             owasp-nvd-${{ runner.os }}-
 
-    
-      - name: Run Dependency Check
+      - name: Run OWASP Dependency Check
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
-          mvn clean verify org.owasp:dependency-check-maven:check \
-          -Dnvd.apiKey=${{ secrets.NVD_API_KEY }}
+          mvn org.owasp:dependency-check-maven:check \
+            -DfailBuildOnCVSS=7 \
+            -DnvdApiKey="${NVD_API_KEY}" \
+            -DsuppressionFile=suppression.xml
+
+
+      
+   
