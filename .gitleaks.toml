@@ -1,7 +1,7 @@
 [extend]
 useDefault = true
 
-[[allowlists]]
+[allowlists]
 description = "Exclude Kubernetes secrets folder"
-paths = ['''k8s/secret\.yml$''']
+paths = ['''k8s/.*secret.*\.ya?ml$''']
 
