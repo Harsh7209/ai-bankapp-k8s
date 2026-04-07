@@ -1,0 +1,20 @@
+name: lint-check
+
+on: workflow_dispatch
+
+jobs:
+  lint-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code-checkout
+        uses: actions/checkout@v4
+
+      - name: setup-up jdk
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: "maven"
+
+      - name: check-code quality
+        run: mvn checkstyle:check
