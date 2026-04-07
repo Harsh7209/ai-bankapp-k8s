@@ -19,4 +19,5 @@ jobs:
 
       - name: Run OWASP Dependency Check
         run: |
-          mvn org.owasp:dependency-check-maven:check
+            mvn org.owasp:dependency-check-maven:check \
+            -Dnvd.apiKey=${{ secrets.NVD_API_KEY }}
