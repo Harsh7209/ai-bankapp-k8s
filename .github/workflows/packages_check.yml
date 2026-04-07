@@ -1,22 +1,23 @@
 name: Packages-check
+
 on: workflow_dispatch
+
 jobs:
   packages_check_workflow:
     runs-on: ubuntu-latest
+
     steps:
-      - name: code-checkout
+      - name: Code Checkout
         uses: actions/checkout@v4
 
-      - name: setup java-env
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: "21"
           distribution: "temurin"
           cache: "maven"
 
-      - name: Build
-        run: mvn clean install -DskipTests
-
+      
       - name: Cache OWASP NVD Database
         uses: actions/cache@v4
         with:
@@ -25,7 +26,8 @@ jobs:
           restore-keys: |
             owasp-nvd-${{ runner.os }}-
 
-      - name: Run OWASP Dependency Check
+    
+      - name: Run Dependency Check
         run: |
-          mvn org.owasp:dependency-check-maven:check \
+          mvn clean verify org.owasp:dependency-check-maven:check \
           -Dnvd.apiKey=${{ secrets.NVD_API_KEY }}
