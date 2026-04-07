@@ -30,6 +30,6 @@ jobs:
             - name: Run trivi scan
               uses: aquasecurity/trivy-action@master
               with:
-                image-ref: docker build -t harsh9308/bank-app-devsecops:${{ github.sha }}
+                image-ref:  harsh9308/bank-app-devsecops:${{ github.sha }}
                 severity: "HIGH"
                 exit-code: 1
