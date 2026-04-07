@@ -6,7 +6,7 @@ jobs:
         runs-on: ubuntu-latest
         steps: 
             - name: checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: dockerfile scanning
               uses: hadolint/hadolint-action@v3.1.0
